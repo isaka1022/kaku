@@ -1,11 +1,22 @@
 {
   "name": "kaku",
-  "displayName": "kaku",
+  "displayName": "kaku — 日本語 Markdown WYSIWYG エディタ",
   "description": "Markdown を紙のような画面で書く、日本語執筆に最適化した WYSIWYG エディタ",
-  "version": "0.0.4",
-  "publisher": "amaino",
-  "private": true,
+  "version": "0.0.5",
+  "publisher": "isaka1022",
   "license": "MIT",
+  "icon": "media/icon.png",
+  "keywords": [
+    "markdown",
+    "japanese",
+    "wysiwyg",
+    "writing",
+    "editor",
+    "日本語",
+    "執筆",
+    "novel",
+    "note-taking"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/isaka1022/kaku.git"
