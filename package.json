@@ -49,12 +49,20 @@
       {
         "command": "kaku.openWith",
         "title": "kaku: 執筆モードで開く"
+      },
+      {
+        "command": "kaku.revealCommentsFile",
+        "title": "kaku: コメントファイルを開く"
       }
     ],
     "menus": {
       "commandPalette": [
         {
           "command": "kaku.openWith",
+          "when": "resourceExtname == .md"
+        },
+        {
+          "command": "kaku.revealCommentsFile",
           "when": "resourceExtname == .md"
         }
       ]
@@ -70,7 +78,17 @@
           ],
           "default": "gothic",
           "description": "本文の書体。gothic（ゴシック）または mincho（明朝）。"
+        },
+        "kaku.comments.contextChars": {
+          "type": "number",
+          "default": 40,
+          "description": "コメントのアンカーとして保存する前後の文脈の文字数。"
         }
+      }
+    },
+    "configurationDefaults": {
+      "files.exclude": {
+        "**/*.md.comments.json": true
       }
     }
   },
