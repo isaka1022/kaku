@@ -305,8 +305,8 @@ export function activate(context: vscode.ExtensionContext): void {
   );
 
   context.subscriptions.push(
-    vscode.commands.registerCommand('kaku.openWith', async () => {
-      const uri = vscode.window.activeTextEditor?.document.uri;
+    vscode.commands.registerCommand('kaku.openWith', async (resource?: vscode.Uri) => {
+      const uri = resource ?? vscode.window.activeTextEditor?.document.uri;
       if (!uri) {
         void vscode.window.showInformationMessage('アクティブな .md ファイルがありません。');
         return;

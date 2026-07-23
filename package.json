@@ -48,7 +48,8 @@
     "commands": [
       {
         "command": "kaku.openWith",
-        "title": "kaku: 執筆モードで開く"
+        "title": "kaku: 執筆モードで開く",
+        "icon": "$(edit)"
       },
       {
         "command": "kaku.revealCommentsFile",
@@ -56,6 +57,13 @@
       }
     ],
     "menus": {
+      "editor/title": [
+        {
+          "command": "kaku.openWith",
+          "when": "resourceExtname == .md && activeCustomEditorId != 'kaku.editor'",
+          "group": "navigation"
+        }
+      ],
       "commandPalette": [
         {
           "command": "kaku.openWith",
