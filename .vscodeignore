@@ -6,4 +6,13 @@ esbuild.mjs
 tsconfig.json
 vitest.config.ts
 .gitignore
+.vscodeignore
 *.vsix
+package-lock.json
+AGENTS.md
+CLAUDE.md
+.claude/**
+docs/**
+scripts/**
+.github/**
+.vscode/**
