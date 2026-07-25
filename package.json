@@ -2,10 +2,14 @@
   "name": "kaku",
   "displayName": "kaku — 日本語 Markdown WYSIWYG エディタ",
   "description": "Markdown を紙のような画面で書く、日本語執筆に最適化した WYSIWYG エディタ",
-  "version": "0.0.6",
+  "version": "0.1.0",
   "publisher": "isaka1022",
   "license": "MIT",
   "icon": "media/icon.png",
+  "homepage": "https://github.com/isaka1022/kaku#readme",
+  "bugs": {
+    "url": "https://github.com/isaka1022/kaku/issues"
+  },
   "keywords": [
     "markdown",
     "japanese",
@@ -27,6 +31,7 @@
   "type": "module",
   "main": "./dist/extension.cjs",
   "categories": [
+    "Visualization",
     "Other"
   ],
   "activationEvents": [
@@ -129,6 +134,7 @@
     "@vscode/vsce": "^3.2.0",
     "esbuild": "^0.28.1",
     "happy-dom": "^20.10.6",
+    "ovsx": "^0.10.1",
     "typescript": "^5.7.0",
     "vitest": "^4.1.10"
   }
