@@ -1,10 +1,22 @@
 # kaku
 
+[![Visual Studio Marketplace](https://img.shields.io/visual-studio-marketplace/v/isaka1022.kaku?label=VS%20Code%20Marketplace)](https://marketplace.visualstudio.com/items?itemName=isaka1022.kaku)
+[![Open VSX](https://img.shields.io/open-vsx/v/isaka1022/kaku?label=Open%20VSX)](https://open-vsx.org/extension/isaka1022/kaku)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+
 Markdown を、Cursor / VS Code の中で紙のような画面で執筆するための WYSIWYG エディタ拡張です。装飾を削ぎ落としたフラットな白い紙面と、選択時にだけ浮かぶバブルツールバーで、日本語のブログ・書籍の執筆に集中できます。frontmatter・チェックボックス・テーブル・コードフェンス、さらに wikilink `[[...]]` などの記法を壊さずに往復できることを最優先に設計しています。
 
-![kaku screenshot](docs/screenshot.png)
+![kaku screenshot](https://raw.githubusercontent.com/isaka1022/kaku/main/docs/screenshot.png)
 
-## インストール（ローカル vsix 配布）
+## インストール
+
+拡張機能ビューで **「kaku」** を検索してインストールします。
+
+- **VS Code**: [Marketplace](https://marketplace.visualstudio.com/items?itemName=isaka1022.kaku) から。または `code --install-extension isaka1022.kaku`
+- **Cursor / VSCodium**: [Open VSX](https://open-vsx.org/extension/isaka1022/kaku) から（これらは MS の公式 Marketplace を使えないため）
+
+<details>
+<summary>ローカル vsix からインストール（開発版）</summary>
 
 ```bash
 npm install
@@ -12,9 +24,9 @@ npm run build
 npx @vscode/vsce package   # kaku-x.y.z.vsix を生成
 ```
 
-生成された `.vsix` を Cursor / VS Code へ導入します（コマンドパレット → "Extensions: Install from VSIX..." で `.vsix` を選択）。
+生成された `.vsix` を導入します（コマンドパレット → "Extensions: Install from VSIX..." で `.vsix` を選択）。
 
-更新時は `package.json` の version を上げてから package してください（同一バージョンの上書きインストールは新旧ファイル混在の原因になります）。
+</details>
 
 ## 使い方
 
