@@ -5,7 +5,7 @@ on:
     tags: ["v*"]
 
 jobs:
-  publish:
+  package:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -16,10 +16,38 @@ jobs:
       - run: npm ci
       - name: Package extension
         run: npx @vscode/vsce package -o kaku.vsix
+      - uses: actions/upload-artifact@v4
+        with:
+          name: vsix
+          path: kaku.vsix
+
+  # The two registries are independent. Publishing the same artifact to both is
+  # one release, but a credential problem at one must not withhold the other.
+  vscode-marketplace:
+    needs: package
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - uses: actions/download-artifact@v4
+        with:
+          name: vsix
       - name: Publish to VS Code Marketplace
         run: npx @vscode/vsce publish --packagePath kaku.vsix -p "$VSCE_PAT"
         env:
           VSCE_PAT: ${{ secrets.VSCE_PAT }}
+
+  open-vsx:
+    needs: package
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - uses: actions/download-artifact@v4
+        with:
+          name: vsix
       - name: Publish to Open VSX
         run: npx ovsx publish kaku.vsix -p "$OVSX_PAT"
         env:
