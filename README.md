@@ -60,3 +60,5 @@ npm run watch       # 変更監視ビルド
 npm run typecheck   # tsc --noEmit（strict）
 npm run test        # vitest（frontmatter 分割・アウトライン抽出・Markdown ラウンドトリップ）
 ```
+
+リリース手順（レジストリへの公開、トークンの用意）は [docs/RELEASING.md](docs/RELEASING.md) にあります。
