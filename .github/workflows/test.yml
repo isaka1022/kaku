@@ -5,6 +5,9 @@ on:
     branches: [main]
   pull_request:
 
+permissions:
+  contents: read
+
 jobs:
   test:
     runs-on: ubuntu-latest
@@ -18,3 +21,25 @@ jobs:
       - run: npm run typecheck
       - run: npm run test
       - run: npm run build
+
+  auto-merge:
+    needs: test
+    if: github.event_name == 'pull_request' && github.event.pull_request.user.login == 'dependabot[bot]'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - id: metadata
+        uses: dependabot/fetch-metadata@v2
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      # major は破壊的変更を人が確かめる。github-actions は GITHUB_TOKEN に
+      # workflow scope が付かず自動マージできないので対象外。
+      - if: |
+          steps.metadata.outputs.update-type != 'version-update:semver-major'
+          && steps.metadata.outputs.package-ecosystem != 'github_actions'
+        run: gh pr merge --squash "$PR_URL"
+        env:
+          PR_URL: ${{ github.event.pull_request.html_url }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
