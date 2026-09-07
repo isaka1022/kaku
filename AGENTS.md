@@ -3,8 +3,8 @@
 Markdown を紙のような画面で書く、日本語執筆に最適化した WYSIWYG エディタ（Cursor / VS Code 拡張）。OSS・MIT。
 
 - リポジトリ: https://github.com/isaka1022/kaku （public）
-- Open VSX: https://open-vsx.org/extension/isaka1022/kaku （**公開先はここのみ**。Cursor が参照するレジストリ）
-- VS Code Marketplace: **未公開**（方針として一旦なし。出すなら `scripts/publish.sh vsce` 分岐が使える）
+- Open VSX: https://open-vsx.org/extension/isaka1022/kaku （Cursor / VSCodium が参照するレジストリ）
+- VS Code Marketplace: https://marketplace.visualstudio.com/items?itemName=isaka1022.kaku （**公開済み**。両レジストリへ CI が独立に publish する）
 
 ## アーキテクチャ
 
@@ -16,11 +16,15 @@ Markdown を紙のような画面で書く、日本語執筆に最適化した W
 
 ## 公開フロー（更新時）
 
+`.github/workflows/release.yml` が `v*` タグ push で走り、package → Marketplace publish → Open VSX publish を
+それぞれ独立したジョブで実行する（片方が落ちてももう片方は出る）。
+
 1. コードを直す
 2. **`package.json` の `version` を必ず上げる**（同一 version で vsix を再パッケージすると旧ファイル混在 → 白画面の温床）
 3. `npm test && npm run typecheck`
-4. `scripts/publish.sh ovsx` で Open VSX に publish（`npx vsce package` は無ければ自動実行）
-5. 必要なら `gh release create vX.Y.Z kaku-X.Y.Z.vsix ...`
+4. `CHANGELOG.md` に追記する（Marketplace の Changelog タブに出る）
+5. `git tag vX.Y.Z && git push origin vX.Y.Z` → CI が両レジストリへ publish
+6. 手動で出したいときだけ `scripts/publish.sh ovsx`（CI が使えない場合のフォールバック）
 
 ## シークレット
 

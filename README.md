@@ -62,3 +62,7 @@ npm run test        # vitest（frontmatter 分割・アウトライン抽出・M
 ```
 
 リリース手順（レジストリへの公開、トークンの用意）は [docs/RELEASING.md](docs/RELEASING.md) にあります。
+
+## これから
+
+これから何を作るか、なぜその順序かは [ROADMAP.md](ROADMAP.md) に書いています。貢献の手順は [CONTRIBUTING.md](CONTRIBUTING.md) を参照してください。
